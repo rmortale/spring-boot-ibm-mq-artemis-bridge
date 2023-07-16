@@ -1,0 +1,25 @@
+debug: false
+
+#logging.level.com.ibm.mq.spring.boot=TRACE
+
+qm1:
+  queueManager: QM1
+  channel: DEV.ADMIN.SVRCONN
+  connName: localhost(1414)
+  user: admin
+  password: passw0rd
+
+raifwd:
+  amqToWmq:
+    - sourceQueue: rai.from.queue.01
+      targetQueue: DEV.QUEUE.1
+
+  wmqToAmq:
+    - sourceQueue: DEV.QUEUE.2
+      targetQueue: rai.to.queue.01
+    - sourceQueue: DEV.QUEUE.3
+      targetQueue: rai.to.queue.02
+  artemis:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
